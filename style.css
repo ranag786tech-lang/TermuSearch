@@ -1,40 +1,96 @@
+/* Overall Page Styling */
 body {
-    font-family: Arial;
-    background: #f4f4f4;
-    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff; /* Clean white background like Google */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
-    margin-top: 100px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 80px;
+    text-align: center;
 }
 
+/* 🔍 Modern Search Bar */
 input {
-    width: 600px;
-    padding: 10px;
+    width: 80%;
+    max-width: 580px;
+    padding: 14px 25px;
     font-size: 16px;
+    border-radius: 30px; /* Fully rounded */
+    border: 1px solid #dfe1e5;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 1px 6px rgba(32,33,36,0.1);
+}
+
+input:focus {
+    box-shadow: 0 1px 8px rgba(32,33,36,0.2);
+    border-color: transparent;
 }
 
 button {
-    padding: 10px 15px;
-    font-size: 16px;
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
     cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    border: 1px solid #dadce0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #202124;
+}
+
+/* 📋 Results Styling - Left Aligned Like Google */
+#results {
+    margin-top: 40px;
+    text-align: left;
+    padding: 0 20px;
 }
 
 .result-item {
-    background: white;
-    margin: 10px auto;
-    padding: 10px;
-    width: 400px;
-    border-radius: 5px;
-}
-/* Google style upgrade */
-input {
-  width: 500px;
-  border-radius: 25px;
-  padding: 12px;
-  border: 1px solid #ccc;
+    background: transparent;
+    margin-bottom: 25px;
+    width: 100%;
+    transition: transform 0.2s;
 }
 
-button {
-  border-radius: 20px;
+.result-item h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.result-item a {
+    color: #1a0dab;
+    text-decoration: none;
+}
+
+.result-item a:hover {
+    text-decoration: underline;
+}
+
+.result-item p {
+    color: #4d5156;
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+/* Error/No Results Message */
+.error-msg, .no-results {
+    color: #70757a;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 20px;
 }
