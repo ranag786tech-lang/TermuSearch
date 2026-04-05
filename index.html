@@ -2,20 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Search Engine</title>
+    <!-- Ye tag mobile par site ko sahi dikhane ke liye zaroori hai -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiD Search 🔍</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <h1>DigiD Search 🔍</h1>
+        <!-- 🎨 Naya Text-Based Logo -->
+        <div class="logo">
+            <span class="d">D</span><span class="i">i</span><span class="g">i</span><span class="d">D</span>
+            <span class="search-text">Search</span>
+        </div>
 
-        <input type="text" id="searchBox" placeholder="Search anything...">
-        <button onclick="search()">Search</button>
+        <!-- 🔍 Search Box Section -->
+        <div class="search-section">
+            <input type="text" id="searchBox" placeholder="Search anything on DigiD...">
+            <br> <!-- Button ko niche lane ke liye -->
+            <button onclick="search()">DigiD Search</button>
+        </div>
 
+        <!-- 📋 Results Yahan Show Honge -->
         <div id="results"></div>
     </div>
 
+    <!-- Scripts -->
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
