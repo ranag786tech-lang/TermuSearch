@@ -48,8 +48,6 @@ async function search(query) {
         `;
         resultsDiv.appendChild(div);
     });
-}
-
 // Enter key support
 document.getElementById("searchBox").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
