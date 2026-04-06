@@ -1,0 +1,27 @@
+name: DigiD Crawler
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Har 12 ghante mein chalega
+  workflow_dispatch:  # Manual run ke liye
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4 pymongo
+    
+    - name: Run crawler
+      env:
+        MONGO_URI: ${{ secrets.MONGO_URI }}
+      run: python crawler.py
