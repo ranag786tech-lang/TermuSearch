@@ -20,8 +20,8 @@ jobs:
     - name: Install dependencies
       run: |
         pip install requests beautifulsoup4 pymongo
-    
+
     - name: Run crawler
-      env:
-        MONGO_URI: ${{ secrets.MONGO_URI }}
-      run: python crawler.py
+  env:
+    MONGO_URI: ${{ secrets.DigiD }}   # ← DigiD use karo
+  run: python crawler.py
