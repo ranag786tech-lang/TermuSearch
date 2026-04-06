@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigiD Search 🔍</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- ✅ PWA ke liye manifest.json add kiya (mobile install hone ke liye) -->
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -38,5 +41,14 @@
     <!-- Scripts -->
     <script src="data.js"></script>
     <script src="script.js"></script>
+    
+    <!-- ✅ Service Worker register karne ke liye (PWA ke liye) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then(() => console.log('✅ Service Worker registered!'))
+            .catch(err => console.log('❌ Service Worker failed:', err));
+        }
+    </script>
 </body>
 </html>
