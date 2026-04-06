@@ -48,3 +48,45 @@ document.getElementById("searchBox").addEventListener("keypress", function(event
         search();
     }
 });
+let selectedTab = 'All';
+
+function setTab(element, tabName) {
+    selectedTab = tabName;
+    
+    // Purane active tab ko hatayein aur naye ko select karein
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    element.classList.add('active');
+
+    // Search function ko dubara call karein
+    search();
+}
+
+// Update your search function filter logic:
+function search() {
+    const query = document.getElementById("searchBox").value.toLowerCase();
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+
+    const filtered = data.filter(item => {
+        const matchesQuery = item.title.toLowerCase().includes(query) || 
+                             item.description.toLowerCase().includes(query);
+        
+        // Tab filter (Agar All hai to sab, warna match wali category)
+        const matchesTab = (selectedTab === 'All') || (item.category === selectedTab);
+        
+        return matchesQuery && matchesTab;
+    });
+
+    // Baqi display logic wahi purani...
+    if (filtered.length === 0) {
+        resultsDiv.innerHTML = `<p class='no-results'>No results found in <strong>${selectedTab}</strong>.</p>`;
+        return;
+    }
+    
+    filtered.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+        div.innerHTML = `<h3><a href="${item.link}" target="_blank">${item.title}</a></h3><p>${item.description}</p>`;
+        resultsDiv.appendChild(div);
+    });
+}
