@@ -1,58 +1,170 @@
 const data = [
     {
-        title: "Google",
-        link: "https://google.com",
-        description: "Duniya ka sab se bara search engine.",
-        category: "All", // Ye 'All' aur 'Search' dono mein aayega
-        keywords: ["search", "find", "information", "google"]
+        "title": "en.wikipedia.org",
+        "link": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+        "description": "Fallback entry for https://en.wikipedia.org/wiki/Artificial_intelligence (crawl unavailable).",
+        "category": "All",
+        "keywords": [
+            "all",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "YouTube",
-        link: "https://youtube.com",
-        description: "Har tarah ki videos aur movies dekhne ka behtareen platform.",
-        category: "Videos",
-        keywords: ["video", "movies", "music", "vlogs", "yt"]
+        "title": "en.wikipedia.org",
+        "link": "https://en.wikipedia.org/wiki/Machine_learning",
+        "description": "Fallback entry for https://en.wikipedia.org/wiki/Machine_learning (crawl unavailable).",
+        "category": "All",
+        "keywords": [
+            "all",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "GitHub",
-        link: "https://github.com",
-        description: "Developers ke liye code host karne aur collaboration ki jagah.",
-        category: "All", 
-        keywords: ["code", "git", "programming", "projects", "repo"]
+        "title": "news.ycombinator.com",
+        "link": "https://news.ycombinator.com",
+        "description": "Fallback entry for https://news.ycombinator.com (crawl unavailable).",
+        "category": "News",
+        "keywords": [
+            "news",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "ChatGPT",
-        link: "https://openai.com",
-        description: "OpenAI ka banaya hua AI chatbot jo har sawal ka jawab deta hai.",
-        category: "All",
-        keywords: ["ai", "chatbot", "help", "writing", "gpt"]
+        "title": "bbc.com",
+        "link": "https://www.bbc.com/news",
+        "description": "Fallback entry for https://www.bbc.com/news (crawl unavailable).",
+        "category": "News",
+        "keywords": [
+            "news",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "Google News",
-        link: "https://google.com",
-        description: "Duniya bhar ki taza tareen khabrein aur updates.",
-        category: "News",
-        keywords: ["news", "khabar", "updates", "headlines"]
+        "title": "books.google.com",
+        "link": "https://books.google.com",
+        "description": "Fallback entry for https://books.google.com (crawl unavailable).",
+        "category": "Books",
+        "keywords": [
+            "books",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "Google Finance",
-        link: "https://google.com/finance",
-        description: "Stock market, business news aur financial data ki maloomat.",
-        category: "Finance",
-        keywords: ["money", "stocks", "market", "finance", "business"]
+        "title": "goodreads.com",
+        "link": "https://www.goodreads.com",
+        "description": "Fallback entry for https://www.goodreads.com (crawl unavailable).",
+        "category": "Books",
+        "keywords": [
+            "books",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "Google Books",
-        link: "https://google.com",
-        description: "Duniya ki mukhtalif kitabon ka barra zakheera.",
-        category: "Books",
-        keywords: ["books", "read", "library", "kitab", "study"]
+        "title": "finance.yahoo.com",
+        "link": "https://finance.yahoo.com",
+        "description": "Fallback entry for https://finance.yahoo.com (crawl unavailable).",
+        "category": "Finance",
+        "keywords": [
+            "finance",
+            "fallback",
+            "digid",
+            "search"
+        ]
     },
     {
-        title: "DigiD Search Repo",
-        link: "https://github.com",
-        description: "Rana Hamza ka banaya hua apna modern search engine project.",
-        category: "All",
-        keywords: ["hamza", "digid", "search engine", "project"]
+        "title": "bloomberg.com",
+        "link": "https://www.bloomberg.com",
+        "description": "Fallback entry for https://www.bloomberg.com (crawl unavailable).",
+        "category": "Finance",
+        "keywords": [
+            "finance",
+            "fallback",
+            "digid",
+            "search"
+        ]
+    },
+    {
+        "title": "unsplash.com",
+        "link": "https://unsplash.com",
+        "description": "Fallback entry for https://unsplash.com (crawl unavailable).",
+        "category": "Images",
+        "keywords": [
+            "images",
+            "fallback",
+            "digid",
+            "search"
+        ]
+    },
+    {
+        "title": "pexels.com",
+        "link": "https://www.pexels.com",
+        "description": "Fallback entry for https://www.pexels.com (crawl unavailable).",
+        "category": "Images",
+        "keywords": [
+            "images",
+            "fallback",
+            "digid",
+            "search"
+        ]
+    },
+    {
+        "title": "github.com",
+        "link": "https://github.com",
+        "description": "Fallback entry for https://github.com (crawl unavailable).",
+        "category": "All",
+        "keywords": [
+            "all",
+            "fallback",
+            "digid",
+            "search"
+        ]
+    },
+    {
+        "title": "openai.com",
+        "link": "https://openai.com",
+        "description": "Fallback entry for https://openai.com (crawl unavailable).",
+        "category": "All",
+        "keywords": [
+            "all",
+            "fallback",
+            "digid",
+            "search"
+        ]
+    },
+    {
+        "title": "youtube.com",
+        "link": "https://www.youtube.com",
+        "description": "Fallback entry for https://www.youtube.com (crawl unavailable).",
+        "category": "Videos",
+        "keywords": [
+            "videos",
+            "fallback",
+            "digid",
+            "search"
+        ]
+    },
+    {
+        "title": "vimeo.com",
+        "link": "https://vimeo.com",
+        "description": "Fallback entry for https://vimeo.com (crawl unavailable).",
+        "category": "Videos",
+        "keywords": [
+            "videos",
+            "fallback",
+            "digid",
+            "search"
+        ]
     }
 ];
