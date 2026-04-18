@@ -1,81 +1,51 @@
-// ============================================
-// یہ تمہارا موجودہ کوڈ ہے (جیسے کا ویسے رہنے دو)
-// ============================================
+/* DigiD Search - Nexus Intelligence Logic */
 
-let selectedTab = 'All';
+let fuse;
 
-function setTab(element, tabName) {
-    selectedTab = tabName;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    element.classList.add('active');
-    search();
+// 1. Initialize the Search Engine
+function initSearch() {
+    const options = {
+        keys: ['title', 'description', 'tech_stack'], // Fields to search in data.js
+        threshold: 0.3, // 0.0 is perfect match, 1.0 matches anything
+        includeScore: true
+    };
+
+    // 'searchData' comes from your data.js file
+    if (typeof searchData !== 'undefined') {
+        fuse = new Fuse(searchData, options);
+        console.log("DigiD Intelligence: Ready");
+    } else {
+        console.error("Data.js not found. Please run your crawler.py");
+    }
 }
-async function search(query) {
-    const url = `https://api.duckduckgo.com/?q=${query}&format=json&pretty=1`;
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    // DuckDuckGo se related topics dikhao
-    const results = data.RelatedTopics;
-    displayResults(results);
-}
- if (query === "") {
-        resultsDiv.innerHTML = "<p style='color: #666;'>Search box khali hai. Kuch type karein...</p>";
+
+// 2. Handle the Search Action
+const searchInput = document.getElementById('search-input');
+const resultsGrid = document.getElementById('results-grid');
+
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value;
+
+    if (!query) {
+        resultsGrid.innerHTML = ''; // Clear results if search is empty
         return;
     }
 
-    const filtered = data.filter(item => {
-        const matchesQuery = item.title.toLowerCase().includes(query) || 
-                             item.description.toLowerCase().includes(query) ||
-                             (item.keywords && item.keywords.some(k => k.toLowerCase().includes(query)));
-        const matchesTab = (selectedTab === 'All') || (item.category === selectedTab);
-        return matchesQuery && matchesTab;
-    });
-
-    if (filtered.length === 0) {
-        resultsDiv.innerHTML = `<div class="no-results"><p>🔍 "<strong>${query}</strong>" ke mutabiq kuch nahi mila.</p></div>`;
-        return;
-    }
-
-    filtered.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "result-item";
-        div.innerHTML = `
-            <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-            <span class="category-tag">${item.category || 'General'}</span>
-            <p>${item.description}</p>
-            <small>${item.link}</small>
-        `;
-        resultsDiv.appendChild(div);
-    });
-// Enter key support
-document.getElementById("searchBox").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        search();
-    }
+    // Use Fuse.js to find results
+    const results = fuse.search(query);
+    renderResults(results.map(r => r.item));
 });
 
-// ============================================
-// 🆕 یہ نئی چیز شامل کرو (اختیاری)
-// ============================================
-
-// یہ فنکشن بتائے گا کہ کتنے results ملے
-function showResultCount() {
-    const query = document.getElementById("searchBox").value.toLowerCase();
-    const count = data.filter(item => 
-        item.title.toLowerCase().includes(query) || 
-        item.description.toLowerCase().includes(query)
-    ).length;
-    
-    const countDiv = document.getElementById("resultCount");
-    if (countDiv) {
-        countDiv.innerHTML = `About ${count} results`;
-    }
+// 3. Render Results to the UI
+function renderResults(items) {
+    resultsGrid.innerHTML = items.map(item => `
+        <a href="${item.url || '#'}" class="result-card" target="_blank">
+            <h3>${item.title}</h3>
+            <p>${item.description || 'No description available.'}</p>
+            <div class="tech-tag">${item.tech_stack ? item.tech_stack.join(' • ') : 'Project'}</div>
+        </a>
+    `).join('');
 }
 
-// جب بھی search ہو، count بھی دکھائے
-const originalSearch = search;
-window.search = function() {
-    originalSearch();
-    showResultCount();
-};
+// Run init on load
+window.addEventListener('DOMContentLoaded', initSearch);
